@@ -92,20 +92,3 @@ body {
     border-radius: 15px;
     border-left: 5px solid var(--accent-pink);
 }
-
-.home-btn {
-    background: white !important;
-    font-weight: bold;
-    border: 1px solid var(--accent-pink);
-    margin-bottom: 20px !important;
-}
-
-hr {
-    border: 0;
-    border-top: 1px solid #f8bbd0;
-    margin-bottom: 15px;
-}
-
-#home-content h1 {
-    color: var(--accent-pink);
-}
