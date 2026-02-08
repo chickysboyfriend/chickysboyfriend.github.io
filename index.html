@@ -4,155 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Favorite Person ❤️</title>
-    <style>
-        /* --- CSS STYLING --- */
-        :root {
-            --bg: #fff5f7;
-            --sidebar-pink: #fce4ec;
-            --accent-pink: #f06292;
-            --text-color: #5d4037;
-            --glass: rgba(255, 255, 255, 0.8);
-        }
-
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Georgia', serif;
-            background-color: var(--bg);
-            color: var(--text-color);
-        }
-
-        .app-container {
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        /* Side Pane */
-        .side-pane {
-            width: 280px;
-            background-color: var(--sidebar-pink);
-            padding: 30px 15px;
-            border-right: 2px solid #f8bbd0;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
-        }
-
-        .nav-header h2 {
-            color: var(--accent-pink);
-            margin: 0;
-            font-size: 1.8rem;
-        }
-
-        .nav-header p {
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-            opacity: 0.8;
-        }
-
-        ul#day-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            overflow-y: auto;
-        }
-
-        .side-pane li {
-            padding: 12px 15px;
-            margin-bottom: 8px;
-            background: white;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-
-        .side-pane li:hover {
-            transform: scale(1.02);
-            border-color: var(--accent-pink);
-            color: var(--accent-pink);
-        }
-
-        .home-btn {
-            font-weight: bold;
-            background: #fff0f5 !important;
-            border: 1px solid var(--accent-pink) !important;
-            margin-bottom: 20px !important;
-            text-align: center;
-        }
-
-        hr {
-            border: 0;
-            border-top: 1px solid #f8bbd0;
-            margin: 10px 0 20px 0;
-        }
-
-        /* Content Area */
-        .content-area {
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            background-image: radial-gradient(#f8bbd0 0.5px, transparent 0.5px);
-            background-size: 20px 20px; /* Subtle dots background */
-        }
-
-        .glass-card {
-            background: var(--glass);
-            backdrop-filter: blur(8px);
-            border-radius: 30px;
-            padding: 40px;
-            max-width: 550px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(240, 98, 146, 0.2);
-            border: 1px solid white;
-        }
-
-        .pink-text { color: var(--accent-pink); }
-
-        .quote-box {
-            font-style: italic;
-            font-size: 1.1rem;
-            margin: 20px 0;
-            padding: 0 20px;
-            line-height: 1.5;
-        }
-
-        .media-box img, .main-gif {
-            width: 100%;
-            max-width: 250px;
-            border-radius: 20px;
-            margin: 15px 0;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-        }
-
-        .note-box {
-            text-align: left;
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            border-left: 5px solid var(--accent-pink);
-            margin-top: 20px;
-        }
-
-        .note-box h3 { margin-top: 0; font-size: 1rem; color: var(--accent-pink); }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .app-container { flex-direction: column; }
-            .side-pane { width: 100%; height: auto; border-right: none; border-bottom: 2px solid #f8bbd0; }
-            .content-area { height: calc(100vh - 200px); }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="app-container">
-        <nav class="side-pane">
+        <nav class="side-pane" id="sidebar" style="display: none;">
             <div class="nav-header">
                 <h2>Feb 2026</h2>
                 <p>For My Favorite Person</p>
@@ -172,18 +29,33 @@
         </nav>
 
         <main class="content-area">
-            <div class="glass-card">
+            <div class="glass-card" id="mainCard">
                 
-                <div id="home-content">
-                    <h1 class="pink-text">For my Chicky ❤️</h1>
+                <div id="proposal-section">
+                    <h1 class="pink-text big-heading">For my Chicky ❤️</h1>
+                    <div class="media-box">
+                         <img src="res/me.jpeg" class="large-gif" alt="Waiting...">
+                    </div>
+                    <h2 class="question">Will you be my Valentine?</h2>
+                    <div class="btn-group">
+                        <button id="yesBtn" onclick="acceptProposal()">Yes</button>
+                        <button id="noBtn" onmouseover="moveButton()">No</button>
+                    </div>
+                </div>
+
+                <div id="home-content" style="display: none;">
+                    <h1 class="pink-text big-heading">For my Chicky ❤️</h1>
+                    <div class="media-box">
+                        <img src="res/zoom.jpeg" alt="Our Photo" class="zoom-photo" onerror="this.src='https://img.icons8.com/emoji/96/000000/heart-suit.png'">
+                    </div>
                     <div class="quote-box">
-                    <p id="personal-note">Love you raa ...</p>
-                    <p>
-                        Inkem inkem inkem kaavaale <br>
-                        Chaale idi chaale<br>
-                        Gundellonaa vegam penchaave<br>
-                        Gummaloki holi techhaave<br>
-                    </p>
+                        <p class="big-note">Love you raa ...</p>
+                        <p class="lyrics">
+                            Inkem inkem inkem kaavaale <br>
+                            Chaale idi chaale<br>
+                            Gundellonaa vegam penchaave<br>
+                            Gummaloki holi techhaave<br>
+                        </p>
                     </div>
                     <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZid3R6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/MDJ9IbxxvDUQM/giphy.gif" class="main-gif">
                 </div>
@@ -194,11 +66,11 @@
                         <p id="quote"></p>
                     </div>
                     <div class="media-box">
-                        <img id="main-image" src="" alt="Cute Valentine Memory">
+                        <img id="main-image" src="" alt="Valentine Memory" onerror="this.src='https://img.icons8.com/emoji/96/000000/heart-suit.png'">
                     </div>
                     <div class="note-box">
                         <h3>My Note to You:</h3>
-                        <p id="personal-note"></p>
+                        <p id="day-note-text"></p>
                     </div>
                 </div>
 
@@ -206,34 +78,6 @@
         </main>
     </div>
 
-    <script>
-        /* --- JAVASCRIPT LOGIC --- */
-        const valentineData = {
-            7: { title: "Rose Day", quote: "You're more beautiful than any rose.", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzh6eDN3Y3Z6eDN3Y3Z6eDN3Y3Z6eDN3Y3Z6eDN3Y3Z6eDN3Y3Z6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKoWXlo3M1nCvc4/giphy.gif", note: "I wanted to find the perfect flower, then I realized you've been standing right here." },
-            8: { title: "Propose Day", quote: "Every day I choose you.", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZicXN6M3ZicXN6M3ZicXN6M3ZicXN6M3ZicXN6M3ZicXN6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/l2JhIidH3f4x7Yuxy/giphy.gif", note: "I don't need a special day to tell you I want you in my life forever, but today is a good excuse." },
-            9: { title: "Chocolate Day", quote: "Life is sweet, but you're sweeter.", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZid3R6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/108M7gCS1JSoO4/giphy.gif", note: "Sending you some virtual sweetness today!" },
-            10: { title: "Teddy Day", quote: "A hug in a box.", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZid3R6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/4N1wOi78ZGzSB6H7vK/giphy.gif", note: "Just a reminder that I'm always here to give you a big warm hug." },
-            11: { title: "Promise Day", quote: "My promise: To always make you smile.", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZid3R6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3og0IPXW3D3E90K1Xy/giphy.gif", note: "I promise to be your biggest fan and your best friend, today and every day." },
-            12: { title: "Hug Day", quote: "The best place in the world is inside a hug.", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZid3R6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/u9B3S2Arf_COQ/giphy.gif", note: "Imagine I'm hugging you right now. Can you feel it?" },
-            13: { title: "Kiss Day", quote: "A kiss is a lovely trick designed by nature.", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZid3R6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/lTQF061vwEBGg/giphy.gif", note: "Sending you a thousand virtual kisses until I can give you real ones." },
-            14: { title: "Valentine's Day", quote: "You are my heart, my soul, my everything.", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZid3R6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/26BRv0ThflsHCqfJA/giphy.gif", note: "Happy Valentine's Day! Thank you for being you and for making my life so beautiful." }
-        };
-
-        function showHome() {
-            document.getElementById('home-content').style.display = 'block';
-            document.getElementById('day-content').style.display = 'none';
-        }
-
-        function showDay(num) {
-            const day = valentineData[num];
-            document.getElementById('home-content').style.display = 'none';
-            document.getElementById('day-content').style.display = 'block';
-            
-            document.getElementById('display-date').innerText = `Feb ${num}: ${day.title}`;
-            document.getElementById('quote').innerText = `"${day.quote}"`;
-            document.getElementById('main-image').src = day.img;
-            document.getElementById('personal-note').innerText = day.note;
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
