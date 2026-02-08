@@ -7,31 +7,42 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Our Valentine's Week</h1>
-            <p>Every day is special with you.</p>
-        </header>
+    <div class="app-container">
+        <nav class="side-pane">
+            <h2>Feb 2026 </h2>
+            <ul id="day-list">
+                <li onclick="showDay(7)">Day 7: Rose Day</li>
+                <li onclick="showDay(8)">Day 8: Propose Day</li>
+                <li onclick="showDay(9)">Day 9: Chocolate Day</li>
+                <li onclick="showDay(10)">Day 10: Teddy Day</li>
+                <li onclick="showDay(11)">Day 11: Promise Day</li>
+                <li onclick="showDay(12)">Day 12: Hug Day</li>
+                <li onclick="showDay(13)">Day 13: Kiss Day</li>
+                <li onclick="showDay(14)">Day 14: Valentine's</li>
+            </ul>
+        </nav>
 
-        <div class="calendar-grid">
-            <div class="day-card" id="day-7">
-                <span class="date">Feb 7</span>
-                <h3>Rose Day</h3>
-                <p>To the most beautiful rose in my garden.</p>
-            </div>
-            
-            <div class="day-card" id="day-8">
-                <span class="date">Feb 8</span>
-                <h3>Propose Day</h3>
-                <p>I'd choose you over and over again.</p>
-            </div>
+        <main class="content-area">
+            <div class="glass-card">
+                <h1 id="display-date">For my Chicky</h1>
 
-            <!-- <div class="day-card today" id="day-14">
-                <span class="date">Feb 14</span>
-                <h3>Valentine's Day</h3>
-                <p>The big day! I love you.</p>
-            </div> -->
-        </div>
+                
+                <div class="media-box">
+                    <img id="main-image" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZid3R6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/MDJ9IbxxvDUQM/giphy.gif" alt="Cute Gif">
+                </div>
+
+                <div class="note-box">
+                    <p id="personal-note">Love you raa ...</p>
+                    <p>
+                        Inkem inkem inkem kaavaale <br>
+                        Chaale idi chaale<br>
+                        Gundellonaa vegam penchaave<br>
+                        Gummaloki holi techhaave<br>
+                    </p>
+                </div>
+            </div>
+        </main>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
