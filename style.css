@@ -1,0 +1,69 @@
+:root {
+    --main-pink: #f8bbd0;
+    --dark-pink: #f06292;
+    --bg-gradient: linear-gradient(135deg, #fff5f7 0%, #fce4ec 100%);
+    --glass: rgba(255, 255, 255, 0.7);
+}
+
+body {
+    margin: 0;
+    font-family: 'Georgia', serif; /* Classy serif font */
+    background: var(--bg-gradient);
+    color: #444;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+header h1 {
+    color: var(--dark-pink);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.day-card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(240, 98, 146, 0.1);
+}
+
+.day-card:hover {
+    transform: translateY(-10px);
+    background: white;
+}
+
+.date {
+    display: block;
+    font-weight: bold;
+    color: var(--dark-pink);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h3 {
+    margin: 10px 0;
+    color: #333;
+}
+
+/* Highlight for today */
+.day-card.today {
+    border: 2px solid var(--dark-pink);
+    background: #fff0f5;
+}
