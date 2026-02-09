@@ -13,7 +13,7 @@ const valentineData = {
         title: "Jaan", 
         quote: "Only sweet jispar kabhi diet nahi lagega.", 
         img: "res/starbucks.jpeg",
-        note: "Can't think of anything abhi, apart from aaj ghar aaye aap, sab mastt bus khana nahi khilaya aur ghar nahi chora maine. Feeling shitty. Agli baar se kuch bhi ho, ye dono cheeze hongi, baaki ho na ho." },
+        note: "Can't think of anything abhi, apart from aaj ghar aaye aap, good cozy time bus khana nahi khilaya aur ghar nahi chora maine. Feeling shitty. Agli baar se kuch bhi ho, ye dono cheeze hongi, baaki ho na ho." },
     10: { title: "Teddy Day", quote: "A hug in a box.", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZid3R6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/4N1wOi78ZGzSB6H7vK/giphy.gif", note: "Just a reminder that I'm always here to give you a warm hug." },
     11: { title: "Promise Day", quote: "My promise: To always make you smile.", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZid3R6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3og0IPXW3D3E90K1Xy/giphy.gif", note: "I promise to be your biggest fan and best friend." },
     12: { title: "Hug Day", quote: "The best place in the world is inside a hug.", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZid3R6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/u9B3S2Arf_COQ/giphy.gif", note: "Imagine I'm hugging you right now." },
