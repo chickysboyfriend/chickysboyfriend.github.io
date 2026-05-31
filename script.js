@@ -28,7 +28,7 @@ const valentineData = {
     11: { 
         title: "Promise Day", 
         quote: "Promise, ki", 
-        img: ["res/promise-day.jpeg", "res/terrace.jpeg"],
+        img: ["res/promise-day-rubber-band.jpeg", "res/terrace.jpeg"],
         note: "First ring jaan. This is from the Ferranoz wala day jaana, hope yaad ho tujhe. Sab kalesh ke baad, tere ghar ke yaha gaadi rukwakar, ek baat promise ki thi humne. Ki hamare beech kabhi koi teesra nahi ayega, friends /family/ chutiye koi aur bhi, koi bhi nahi. Sharing everything, every small thing with each other is a promise, hamesha. Koi bhi dikkat, musibat, kuch bhi karke resolve kar lenge. Hamesha hamesha pyaar jana. ",
         note2: "Jaan, hello from Blr. Very simple yaar, promise to always be there for you, love, respect, & adore you. Hameshaa. Make myself better each and every day for you, for us. Har chiz jo teri problem hain meri problem hain, har jeet teri yaar i'll be crazy crazy happy. Har baat sunna, samajna, har baat sort out kar lenge, bohot shaanti se. Mast ghar banayenge, careers banging, body banging, paise khoob, trips and kapde sexy. Bus ek promise, dono ek dusre par kabhi kabhi give up nahi karenge, and no one enters our space, in any sense jaan, hamara space, baate sab private. Hamesha hamesha wala pyaar - Jaan" 
     },
