@@ -16,6 +16,7 @@ const valentineData = {
         title: "Khanaaa", 
         quote: "Jeete hain khane ke liye", 
         img: ["res/cafe-pizza.jpeg","res/chocolate.jpeg"],
+        video: "res/khana.mp4",
         note: "Khate peete rahenge ekdum mast jaanuu, Khana aur ek dusre ko bhi.." 
     },
     10: { 
@@ -27,12 +28,27 @@ const valentineData = {
     11: { 
         title: "Promise Day", 
         quote: "Promise, ki", 
-        img: "res/diwalivisit.jpeg", 
-        note: "Jaan, hello from Blr. Very simple yaar, promise to always be there for you, love, respect, & adore you. Hameshaa. Make myself better each and every day for you, for us. Har chiz jo teri problem hain meri problem hain, har jeet teri yaar i'll be crazy crazy happy. Har baat sunna, samajna, har baat sort out kar lenge, bohot shaanti se. Mast ghar banayenge, careers banging, body banging, paise khoob, trips and kapde sexy. Bus ek promise, dono ek dusre par kabhi kabhi give up nahi karenge, and no one enters our space, in any sense jaan, hamara space, baate sab private. Hamesha hamesha wala pyaar - Jaan" 
+        img: ["res/promise-day.jpeg", "res/terrace.jpeg"],
+        note: "First ring jaan. This is from the Ferranoz wala day jaana, hope yaad ho tujhe. Sab kalesh ke baad, tere ghar ke yaha gaadi rukwakar, ek baat promise ki thi humne. Ki hamare beech kabhi koi teesra nahi ayega, friends /family/ chutiye koi aur bhi, koi bhi nahi. Sharing everything, every small thing with each other is a promise, hamesha. Koi bhi dikkat, musibat, kuch bhi karke resolve kar lenge. Hamesha hamesha pyaar jana. ",
+        note2: "Jaan, hello from Blr. Very simple yaar, promise to always be there for you, love, respect, & adore you. Hameshaa. Make myself better each and every day for you, for us. Har chiz jo teri problem hain meri problem hain, har jeet teri yaar i'll be crazy crazy happy. Har baat sunna, samajna, har baat sort out kar lenge, bohot shaanti se. Mast ghar banayenge, careers banging, body banging, paise khoob, trips and kapde sexy. Bus ek promise, dono ek dusre par kabhi kabhi give up nahi karenge, and no one enters our space, in any sense jaan, hamara space, baate sab private. Hamesha hamesha wala pyaar - Jaan" 
     },
-    12: { title: "Hug Day", quote: "The best place in the world is inside a hug.", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZid3R6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/u9B3S2Arf_COQ/giphy.gif", note: "Imagine I'm hugging you right now." },
-    13: { title: "Kiss Day", quote: "A kiss is a lovely trick designed by nature.", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZid3R6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/lTQF061vwEBGg/giphy.gif", note: "Sending you a thousand virtual kisses." },
-    14: { title: "Valentine's Day", quote: "You are my heart, my soul, my everything.", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZid3R6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/26BRv0ThflsHCqfJA/giphy.gif", note: "Happy Valentine's Day! Thank you for making my life beautiful." }
+    12: { 
+        title: "Hug Day", 
+        quote: "Hug se kya theek nahi hota jaan.", 
+        img: ["res/blr.jpeg", "res/blr-2.jpeg"], 
+        note: "I remember Bangalore jaan, night 1 & night 2. Especially night 2. Warm cold warm cold, crazy. Legit i saw a hug fixing things, kitni hi neend bhi na ho hum, live live demo ekdum. Miss those 3 days, Bohot bohot pyaar." 
+    },
+    13: { 
+        title: "Kiss Day", 
+        quote: "Pappiss jhappiiss.", 
+        img: ["res/ssik1.jpeg","res/ssik4.jpeg"],
+        note: "Cannot wait jaana for the day that teri pappi tere khandan ke saamne lunga. Mere khaandan ke saamne, dono ke hi. Tab tak aur hamesha ke liye boohot bohot pyaar meri jaan. Ummmaaahhhhh." },
+
+    14: { 
+        title: "Valentine's Day", 
+        quote: "Meri jaan", 
+        img: "res/wallet-family-day-photo.jpeg", 
+        note: "Kuch kehne se pehle ek request, ek photo chaiye mujhe tera. Wallet main fridge magnet lekar ghum raha hu. Tuesday ko la dena please. \n\n Simple jaan, I'm there for you, hamesha pyaar, respect and pure efforts ke saath. I hope you acheive all that you dream of and more. Career & personal life, emotionally, financially. Har chadav utar chadav main we'll excel and make it so so much better. I truly believe jaana we can have it all. See the growth we've had in about under an year's time. Sab hoga manifesting each and everything that we plan on doing. \n\nI love you jaana." }
 };
 
 // Movement Logic for No Button
@@ -72,27 +88,36 @@ function showDay(num) {
     document.getElementById('quote').innerText = `"${day.quote}"`;
     document.getElementById('day-note-text').innerText = day.note;
 
+    // Handle Images
     const mediaContainer = document.getElementById('media-container');
-    mediaContainer.innerHTML = ''; // Empty the layout to rebuild safely
+    mediaContainer.innerHTML = ''; 
 
-    // Check if day.img is an array of multiple images or a single path string
     if (Array.isArray(day.img)) {
         day.img.forEach(imgSrc => {
             const imgElement = document.createElement('img');
             imgElement.src = imgSrc;
             imgElement.className = "custom-day-img";
-            imgElement.onerror = function() {
-                this.src = 'https://img.icons8.com/emoji/96/000000/heart-suit.png';
-            };
+            imgElement.onerror = function() { this.src = 'https://img.icons8.com/emoji/96/000000/heart-suit.png'; };
             mediaContainer.appendChild(imgElement);
         });
-    } else {
+    } else if (day.img) {
         const imgElement = document.createElement('img');
         imgElement.src = day.img;
         imgElement.className = "custom-day-img";
-        imgElement.onerror = function() {
-            this.src = 'https://img.icons8.com/emoji/96/000000/heart-suit.png';
-        };
+        imgElement.onerror = function() { this.src = 'https://img.icons8.com/emoji/96/000000/heart-suit.png'; };
         mediaContainer.appendChild(imgElement);
+    }
+
+    // NEW: Handle Video rendering below the note box
+    const videoContainer = document.getElementById('video-container');
+    videoContainer.innerHTML = ''; // Clear previous video if switching days
+
+    if (day.video) {
+        const videoElement = document.createElement('video');
+        videoElement.src = day.video;
+        videoElement.className = "custom-day-video";
+        videoElement.controls = true; // Shows play, pause, volume slider
+        videoElement.preload = "metadata";
+        videoContainer.appendChild(videoElement);
     }
 }
