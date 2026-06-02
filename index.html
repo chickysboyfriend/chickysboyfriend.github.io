@@ -8,6 +8,9 @@
 </head>
 <body>
 
+    <!-- Mobile Navigation Toggle Button -->
+    <button id="menuToggle" onclick="toggleMobileMenu()" style="display: none;">🍔 Menu</button>
+
     <div class="app-container">
         <nav class="side-pane" id="sidebar" style="display: none;">
             <div class="nav-header">
@@ -15,16 +18,16 @@
                 <p>For My Favorite Person</p>
             </div>
             <ul id="day-list">
-                <li onclick="showHome()" class="home-btn">🏠 Home</li>
+                <li onclick="showHomeMobile()" class="home-btn">🏠 Home</li>
                 <hr>
-                <li onclick="showDay(7)">Day 7: Rose Day</li>
-                <li onclick="showDay(8)">Day 8: Propose Day</li>
-                <li onclick="showDay(9)">Day 9: Chocolate Day</li>
-                <li onclick="showDay(10)">Day 10: Teddy Day</li>
-                <li onclick="showDay(11)">Day 11: Promise Day</li>
-                <li onclick="showDay(12)">Day 12: Hug Day</li>
-                <li onclick="showDay(13)">Day 13: Kiss Day</li>
-                <li onclick="showDay(14)">Day 14: Valentine's</li>
+                <li onclick="showDayMobile(7)">Day 7: Rose Day</li>
+                <li onclick="showDayMobile(8)">Day 8: Propose Day</li>
+                <li onclick="showDayMobile(9)">Day 9: Chocolate Day</li>
+                <li onclick="showDayMobile(10)">Day 10: Teddy Day</li>
+                <li onclick="showDayMobile(11)">Day 11: Promise Day</li>
+                <li onclick="showDayMobile(12)">Day 12: Hug Day</li>
+                <li onclick="showDayMobile(13)">Day 13: Kiss Day</li>
+                <li onclick="showDayMobile(14)">Day 14: Valentine's</li>
             </ul>
         </nav>
 
@@ -40,7 +43,8 @@
                     <h2 class="question">Will you be my Valentine?</h2>
                     <div class="btn-group">
                         <button id="yesBtn" onclick="acceptProposal()">Yes</button>
-                        <button id="noBtn" onmouseover="moveButton()">No</button>
+                        <!-- Added ontouchstart for immediate mobile responsiveness -->
+                        <button id="noBtn" onmouseover="moveButton()" ontouchstart="moveButton(event)">No</button>
                     </div>
                 </div>
 

@@ -2,7 +2,6 @@ const valentineData = {
     7: { 
         title: "Meri pyaari fool", 
         quote: "(gulab ka)", 
-        // Handles 2 pictures cleanly
         img: ["res/onam.jpeg", "res/rose-day.jpeg"],
         note: "Jaan.. Kaise ho re. (``Theek hu ree``). Onam wala is the first photo i think that we've taken ek saath. Pata tha mujhe ye time tak that one day hum dono saath honge, but itna saath, itna pyaar, CRAZY. Itna pyaar hoga hamare beech, ye kabhi socha nahi tha re life main hoga karke. Very instagram/social media thing to see this happening to me. Dhanyawad aapka cutie. I hope ye aur aur aur badhe, pure chaand tak pohoche.. And sachi kahu toh tu kinda gulab hain re, bohot pyaar and kabhi kabar chubb bhi jaate ho. Chubb jaate, chip jaate, time laga jaan ek ek karke saare kaaton se dosti karne. Tu mere & main tere kaaton se. Aur ab tak ye kaaton se dosti yaari jaari hain. I always always wish, ghanta wish, believe that we will find the softer petal wala side jisse hum ek dusre ko kaaton ko overcome karke, trust karke, in har ek situation."
     },
@@ -29,8 +28,7 @@ const valentineData = {
         title: "Promise Day", 
         quote: "Promise, ki", 
         img: ["res/promise-day-rubber-band.jpeg", "res/terrace.jpeg"],
-        note: "First ring jaan. This is from the Ferranoz wala day jaana, hope yaad ho tujhe. Sab kalesh ke baad, tere ghar ke yaha gaadi rukwakar, ek baat promise ki thi humne. Ki hamare beech kabhi koi teesra nahi ayega, friends /family/ chutiye koi aur bhi, koi bhi nahi. Sharing everything, every small thing with each other is a promise, hamesha. Koi bhi dikkat, musibat, kuch bhi karke resolve kar lenge. Hamesha hamesha pyaar jana. ",
-        note2: "Jaan, hello from Blr. Very simple yaar, promise to always be there for you, love, respect, & adore you. Hameshaa. Make myself better each and every day for you, for us. Har chiz jo teri problem hain meri problem hain, har jeet teri yaar i'll be crazy crazy happy. Har baat sunna, samajna, har baat sort out kar lenge, bohot shaanti se. Mast ghar banayenge, careers banging, body banging, paise khoob, trips and kapde sexy. Bus ek promise, dono ek dusre par kabhi kabhi give up nahi karenge, and no one enters our space, in any sense jaan, hamara space, baate sab private. Hamesha hamesha wala pyaar - Jaan" 
+        note: "First ring jaan. This is from the Ferranoz wala day jaana, hope yaad ho tujhe. Sab kalesh ke baad, tere ghar ke yaha gaadi rukwakar, ek baat promise ki thi humne. Ki hamare beech kabhi koi teesra nahi ayega, friends /family/ chutiye koi aur bhi, koi bhi nahi. Sharing everything, every small thing with each other is a promise, hamesha. Koi bhi dikkat, musibat, kuch bhi karke resolve kar lenge. Hamesha hamesha pyaar jana. \n\nJaan, hello from Blr. Very simple yaar, promise to always be there for you, love, respect, & adore you. Hameshaa. Make myself better each and every day for you, for us. Har chiz jo teri problem hain meri problem hain, har jeet teri yaar i'll be crazy crazy happy. Har baat sunna, samajna, har baat sort out kar lenge, bohot shaanti se. Mast ghar banayenge, careers banging, body banging, paise khoob, trips and kapde sexy. Bus ek promise, dono ek dusre par kabhi kabhi give up nahi karenge, and no one enters our space, in any sense jaan, hamara space, baate sab private. Hamesha hamesha wala pyaar - Jaan" 
     },
     12: { 
         title: "Hug Day", 
@@ -42,26 +40,32 @@ const valentineData = {
         title: "Kiss Day", 
         quote: "Pappiss jhappiiss.", 
         img: ["res/ssik1.jpeg","res/ssik4.jpeg"],
-        note: "Cannot wait jaana for the day that teri pappi tere khandan ke saamne lunga. Mere khaandan ke saamne, dono ke hi. Tab tak aur hamesha ke liye boohot bohot pyaar meri jaan. Ummmaaahhhhh." },
-
+        note: "Cannot wait jaana for the day that teri pappi tere khandan ke saamne lunga. Mere khaandan ke saamne, dono ke hi. Tab tak aur hamesha ke liye boohot bohot pyaar meri jaan. Ummmaaahhhhh." 
+    },
     14: { 
         title: "Valentine's Day", 
         quote: "Meri jaan", 
         img: "res/wallet-family-day-photo.jpeg", 
-        note: "Kuch kehne se pehle ek request, ek photo chaiye mujhe tera. Wallet main fridge magnet lekar ghum raha hu. Tuesday ko la dena please. \n\n Simple jaan, I'm there for you, hamesha pyaar, respect and pure efforts ke saath. I hope you acheive all that you dream of and more. Career & personal life, emotionally, financially. Har chadav utar chadav main we'll excel and make it so so much better. I truly believe jaana we can have it all. See the growth we've had in about under an year's time. Sab hoga manifesting each and everything that we plan on doing. \n\nI love you jaana." }
+        note: "Kuch kehne se pehle ek request, ek photo chaiye mujhe tera. Wallet main fridge magnet lekar ghum raha hu. Tuesday ko la dena please. \n\n Simple jaan, I'm there for you, hamesha pyaar, respect and pure efforts ke saath. I hope you acheive all that you dream of and more. Career & personal life, emotionally, financially. Har chadav utar chadav main we'll excel and make it so so much better. I truly believe jaana we can have it all. See the growth we've had in about under an year's time. Sab hoga manifesting each and everything that we plan on doing. \n\nI love you jaana." 
+    }
 };
 
 // Movement Logic for No Button
-function moveButton() {
+function moveButton(event) {
+    if (event) {
+        event.preventDefault(); // Prevents sticky screen zooming triggers on touch devices
+    }
     const noBtn = document.getElementById('noBtn');
     const card = document.getElementById('mainCard');
     
-    const padding = 30;
+    const padding = 25;
+    // Uses client bounds to make sure the button stays inside the element boundary box safely
     const maxX = card.clientWidth - noBtn.offsetWidth - padding;
     const maxY = card.clientHeight - noBtn.offsetHeight - padding;
 
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
+    // Boundary constraints prevent numbers turning into negative coordinates
+    const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+    const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
 
     noBtn.style.position = "absolute";
     noBtn.style.left = randomX + "px";
@@ -72,6 +76,38 @@ function acceptProposal() {
     document.getElementById('proposal-section').style.display = 'none';
     document.getElementById('sidebar').style.display = 'flex';
     document.getElementById('home-content').style.display = 'block';
+    
+    // Evaluate screen window sizes to conditionally turn on menu accessibility triggers
+    if (window.innerWidth <= 768) {
+        document.getElementById('menuToggle').style.display = 'block';
+    }
+}
+
+// Mobile Interface Drawer Controllers
+function toggleMobileMenu() {
+    const sidebar = document.getElementById('sidebar');
+    const menuBtn = document.getElementById('menuToggle');
+    sidebar.classList.toggle('active');
+    
+    if (sidebar.classList.contains('active')) {
+        menuBtn.innerText = "❌ Close";
+    } else {
+        menuBtn.innerText = "🍔 Menu";
+    }
+}
+
+function showHomeMobile() {
+    showHome();
+    if (window.innerWidth <= 768) {
+        toggleMobileMenu(); // Closes drawer automatically after select tracking
+    }
+}
+
+function showDayMobile(num) {
+    showDay(num);
+    if (window.innerWidth <= 768) {
+        toggleMobileMenu(); // Closes drawer automatically after select tracking
+    }
 }
 
 function showHome() {
@@ -108,16 +144,31 @@ function showDay(num) {
         mediaContainer.appendChild(imgElement);
     }
 
-    // NEW: Handle Video rendering below the note box
+    // Handle Video Elements
     const videoContainer = document.getElementById('video-container');
-    videoContainer.innerHTML = ''; // Clear previous video if switching days
+    videoContainer.innerHTML = ''; 
 
     if (day.video) {
         const videoElement = document.createElement('video');
         videoElement.src = day.video;
         videoElement.className = "custom-day-video";
-        videoElement.controls = true; // Shows play, pause, volume slider
+        videoElement.controls = true; 
         videoElement.preload = "metadata";
         videoContainer.appendChild(videoElement);
     }
 }
+
+// Adjust UI configurations if window bounds scale dynamically
+window.addEventListener('resize', () => {
+    const menuBtn = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar.style.display !== 'none') {
+        if (window.innerWidth > 768) {
+            menuBtn.style.display = 'none';
+            sidebar.classList.remove('active');
+        } else {
+            menuBtn.style.display = 'block';
+            menuBtn.innerText = "🍔 Menu";
+        }
+    }
+});
