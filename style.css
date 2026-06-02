@@ -6,7 +6,7 @@
     --glass: rgba(255, 255, 255, 0.8);
 }
 
-/* Global Heart Cursor */
+/* Global Heart Cursor & Reset */
 body, html {
     margin: 0;
     padding: 0;
@@ -102,19 +102,22 @@ hr {
 }
 
 .glass-card {
-    position: relative;
+    position: relative; /* Anchor for absolute positioning of escaping button */
     background: var(--glass);
     backdrop-filter: blur(8px);
     border-radius: 30px;
     padding: 40px;
     max-width: 800px; 
-    width: 100%;
+    width: 90%;
     max-height: 90vh;
     overflow-y: auto;
     text-align: center;
     box-shadow: 0 15px 35px rgba(240, 98, 146, 0.2);
     border: 1px solid white;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .pink-text { color: var(--accent-pink); }
@@ -129,6 +132,7 @@ hr {
     gap: 20px;
     margin-top: 30px;
     min-height: 60px;
+    width: 100%;
 }
 
 button {
@@ -140,9 +144,9 @@ button {
 }
 
 #yesBtn { background-color: var(--accent-pink); color: white; }
-#noBtn { background-color: #eee; color: #555; }
+#noBtn { background-color: #eee; color: #555; transition: 0.1s ease-out; }
 
-/* Multi-image layout adjustments */
+/* Multi-image Layout (Ensures NO cropping) */
 .multi-media-box {
     display: flex;
     justify-content: center;
@@ -158,25 +162,29 @@ button {
     min-width: 250px;
     max-width: 100%;
     height: auto;
-    max-height: 380px;
-    object-fit: cover;
+    max-height: 45vh; /* Prevents tall vertical images from pushing text away */
+    object-fit: contain; /* Keeps the full image context fully visible */
     border-radius: 20px;
     box-shadow: 0 8px 15px rgba(0,0,0,0.1);
     border: 4px solid white;
+    background-color: white; /* Clean padding backup color */
 }
 
-/* Standard static media items */
+/* Standard Static Media Layouts (Ensures NO cropping) */
 .media-box img, .main-gif, .zoom-photo {
     width: 100%;
     max-width: 350px;
     height: auto;
+    max-height: 45vh;
+    object-fit: contain; /* Keeps the full landing page context visible */
     border-radius: 20px;
     margin: 15px 0;
     box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
 .zoom-photo { border: 5px solid white; max-width: 300px; }
-.large-gif { max-width: 280px; border-radius: 20px; }
+.large-gif { max-width: 280px; }
 
+/* Video Container Formatting */
 .video-box-wrapper {
     width: 100%;
     display: flex;
@@ -200,6 +208,8 @@ button {
     margin: 20px 0;
     padding: 0 10px;
     line-height: 1.5;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .note-box {
@@ -211,43 +221,56 @@ button {
     margin-top: 25px;
     line-height: 1.6;
     white-space: pre-line; /* Renders written \n breaks elegantly */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .note-box h3 { margin-top: 0; font-size: 1.1rem; color: var(--accent-pink); letter-spacing: 0.5px; }
 .lyrics { font-size: 1.2rem; line-height: 1.8; font-style: italic; }
 
-/* --- MOBILE SPECIFIC MEDIA QUERY OVERRIDES --- */
+/* Hide card scrollbars for a premium finish */
+.glass-card::-webkit-scrollbar { width: 6px; }
+.glass-card::-webkit-scrollbar-thumb { background: var(--accent-pink); border-radius: 10px; }
+
+/* --- MOBILE RESPONSIVE LAYOUT OVERRIDES --- */
 @media (max-width: 768px) {
     .side-pane {
         position: fixed;
         top: 0;
-        left: -290px; /* Hidden out-of-frame by default */
+        left: -290px; /* Conceals navigation panel off-frame */
         height: 100vh;
         z-index: 999;
         transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 5px 0 15px rgba(0,0,0,0.1);
     }
     
-    /* When active, drawer slides into view */
+    /* Active modifier pushes menu into visible track */
     .side-pane.active {
         left: 0;
     }
 
     .content-area {
         padding: 10px;
-        padding-top: 70px; /* Leave breathing room for floating open/close toggle */
+        padding-top: 70px; /* Provides separation from upper floating action trigger */
     }
 
     .glass-card {
         padding: 20px 15px;
-        max-height: none; /* Let content build natively down the device track */
+        max-height: none; /* Allows natural native downstream browser scrolling */
     }
 
     .big-heading { font-size: 2.2rem !important; }
     .question { font-size: 1.6rem !important; }
     
+    /* Mobile Scale-down to prioritize text readability */
     .custom-day-img {
         flex: 1 1 100%;
         max-width: 100%;
+        max-height: 35vh;
+    }
+    
+    .media-box img, .main-gif, .zoom-photo {
+        max-width: 100%;
+        max-height: 35vh;
     }
 }
