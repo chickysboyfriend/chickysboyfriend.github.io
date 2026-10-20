@@ -274,3 +274,13 @@ button {
         max-height: 35vh;
     }
 }
+
+.folder-header {
+    font-weight: bold;
+    color: var(--accent-pink);
+    background: transparent !important;
+    padding: 8px 5px !important;
+    font-size: 1.1rem;
+    pointer-events: none;
+    border: none !important;
+}
