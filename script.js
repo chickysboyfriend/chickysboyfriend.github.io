@@ -51,7 +51,7 @@ const eventData = {
         }
     },
     oct: {
-        1: {
+        14: {
             title: "Meri bakchodi",
             quote: "Sorry",
             img: "res/wallet-family-day-photo.jpeg",
