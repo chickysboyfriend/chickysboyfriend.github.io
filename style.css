@@ -55,12 +55,15 @@ button, li, .home-btn {
     flex-direction: column;
     box-shadow: 2px 0 10px rgba(0,0,0,0.05);
     flex-shrink: 0;
+    overflow-y: auto; /* Enables vertical scrolling for long menus */
+    -webkit-overflow-scrolling: touch; /* Smooth iOS momentum scrolling */
+    box-sizing: border-box;
 }
 
 .nav-header h2 { color: var(--accent-pink); margin: 0; font-size: 1.8rem; }
 .nav-header p { font-size: 0.9rem; margin-bottom: 25px; opacity: 0.8; }
 
-ul#day-list { list-style: none; padding: 0; margin: 0; overflow-y: auto; }
+ul#day-list { list-style: none; padding: 0; margin: 0; }
 
 .side-pane li {
     padding: 12px 15px;
@@ -79,6 +82,16 @@ ul#day-list { list-style: none; padding: 0; margin: 0; overflow-y: auto; }
     border: 1px solid var(--accent-pink) !important;
     margin-bottom: 20px !important;
     text-align: center;
+}
+
+.folder-header {
+    font-weight: bold;
+    color: var(--accent-pink);
+    background: transparent !important;
+    padding: 8px 5px !important;
+    font-size: 1.1rem;
+    pointer-events: none;
+    border: none !important;
 }
 
 hr {
@@ -239,9 +252,13 @@ button {
         top: 0;
         left: -290px; /* Conceals navigation panel off-frame */
         height: 100vh;
+        max-height: 100vh;
+        overflow-y: auto; /* Ensures full drawer touch-scrolling on mobile */
+        -webkit-overflow-scrolling: touch;
         z-index: 999;
         transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+        padding-bottom: 40px; /* Provides extra padding at bottom when scrolled */
     }
     
     /* Active modifier pushes menu into visible track */
@@ -274,14 +291,3 @@ button {
         max-height: 35vh;
     }
 }
-
-.folder-header {
-    font-weight: bold;
-    color: var(--accent-pink);
-    background: transparent !important;
-    padding: 8px 5px !important;
-    font-size: 1.1rem;
-    pointer-events: none;
-    border: none !important;
-}
-
