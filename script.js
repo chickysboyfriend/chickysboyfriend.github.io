@@ -125,6 +125,19 @@ function showHome() {
     document.getElementById('day-content').style.display = 'none';
 }
 
+function toggleMobileMenu() {
+    const sidebar = document.getElementById('sidebar');
+    const menuBtn = document.getElementById('menuToggle');
+    sidebar.classList.toggle('active');
+    document.body.classList.toggle('menu-open'); // Locks/unlocks main background scroll
+    
+    if (sidebar.classList.contains('active')) {
+        menuBtn.innerText = "❌ Close";
+    } else {
+        menuBtn.innerText = "🍔 Menu";
+    }
+}
+
 function showDay(num, month = 'feb') {
     const monthObj = eventData[month];
     if (!monthObj || !monthObj[num]) return;
